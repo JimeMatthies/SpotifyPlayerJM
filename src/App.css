@@ -1,0 +1,9 @@
+body {
+    background-color: white;
+    margin: 0;
+}
+
+.footer {
+    background-color: rgb(46, 46, 46);
+    font-family: 'Rokkitt', serif;
+}
