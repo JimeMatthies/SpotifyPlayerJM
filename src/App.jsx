@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Loading from "./components/Loading"
+import Loading from "./components/Loading";
 import { Icon } from "@iconify/react";
 import playCircleFill from "@iconify-icons/bi/play-circle-fill";
 import pauseOutlineFilled from "@iconify-icons/carbon/pause-outline-filled";
@@ -12,8 +12,8 @@ const App = () => {
     const [currentsong, setCurrentsong] = useState(null);
     const [playbtn, setPlaybtn] = useState("on");
     const track = useRef();
-    const URL_API = "https://assets.breatheco.de/apis/sound/"
-    const URL_SONGS = URL_API + "songs"
+    const URL_API = "https://assets.breatheco.de/apis/sound/";
+    const URL_SONGS = URL_API + "songs";
 
     useEffect(() => {
         getSongs(URL_SONGS)
@@ -26,7 +26,6 @@ const App = () => {
             'Content-Type': 'application/json',
         },
     }) => {
-
         fetch(url, options)
             .then((response) => {
                 console.log(response);
@@ -38,36 +37,37 @@ const App = () => {
             }).catch(e => {
                 console.log(e);
             });
-    }
+    };
 
-    function play() {
+    const play = () => {
         track.current.play();
         setPlaybtn("off");
-    }
+    };
 
-    function pause() {
+    const pause = () => {
         track.current.pause();
         setPlaybtn("on");
-    }
+    };
 
     const next = () => {
         if (currentsong !== songs.length - 1) {
-            track.current.src = URL_API + songs[currentsong + 1].url
+            track.current.src = URL_API + songs[currentsong + 1].url;
             setCurrentsong(currentsong + 1);
             play();
         } else if (currentsong === songs.length - 1) {
-            setCurrentsong(0)
-            track.current.src = URL_API + songs[0].url
+            setCurrentsong(0);
+            track.current.src = URL_API + songs[0].url;
             play();
         }
     };
+
     const prev = () => {
         if (currentsong !== 0) {
-            track.current.src = URL_API + songs[currentsong - 1].url
+            track.current.src = URL_API + songs[currentsong - 1].url;
             setCurrentsong(currentsong - 1);
             play();
         } else if (currentsong === 0) {
-            track.current.src = URL_API + songs[songs.length - 1].url
+            track.current.src = URL_API + songs[songs.length - 1].url;
             setCurrentsong(songs.length - 1);
             play();
         }
@@ -76,6 +76,7 @@ const App = () => {
     const volUp = () => {
         track.current.volume += 0.1;
     };
+
     const volDown = () => {
         track.current.volume -= 0.1;
     };
@@ -83,8 +84,8 @@ const App = () => {
     const select = (url, index) => {
         setCurrentsong(index);
         track.current.src = URL_API + url;
-        play()
-    }
+        play();
+    };
 
     console.log("Current song index:", currentsong);
 
@@ -108,7 +109,7 @@ const App = () => {
             </ol>
             <div className="footer col-12 m-0 d-flex justify-content-center fixed-bottom">
                 <div className="col-2 m-0 p-0 d-flex justify-content-center align-items-center" onClick={volDown}>
-                    <Icon icon={volumeDownFilledAlt} color="white" height="40"/>
+                    <Icon icon={volumeDownFilledAlt} color="white" height="40" />
                 </div>
                 <div className="col-8 d-flex justify-content-center align-items-center">
                     <div className="col-2 m-0 p-0 d-flex justify-content-center align-items-center" onClick={prev}>
@@ -127,7 +128,7 @@ const App = () => {
                     </div>
                 </div>
                 <div className="col-2 m-0 p-0 d-flex justify-content-center align-items-center" onClick={volUp}>
-                    <Icon icon={volumeUpFilledAlt} color="white" height="40"/>
+                    <Icon icon={volumeUpFilledAlt} color="white" height="40" />
                 </div>
             </div>
         </div>
