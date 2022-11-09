@@ -25,6 +25,7 @@
     "@babel/preset-react": "^7.18.6",
     "@iconify-icons/bi": "^1.2.11",
     "@iconify-icons/carbon": "^1.2.11",
+    "@iconify/icons-carbon": "^1.2.11",
     "@iconify/react": "^4.0.0",
     "autoprefixer": "^10.4.10",
     "babel-loader": "^8.2.5",
